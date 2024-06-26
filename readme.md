@@ -7,3 +7,8 @@ It simplifies and helps in case management when dealing with a large (or small!)
 This project relies heavily on https://github.com/AnttiKurittu/kirjuri.
 
 This project is deisgned for operating on an AIRGAPPED network.
+## Features
+- Case management
+- Evidence tracking
+- Reporting and analytics
+- User authentication and roles
