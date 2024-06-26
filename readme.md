@@ -16,6 +16,28 @@ This project relies heavily on [Kirjuri](https://github.com/AnttiKurittu/kirjuri
 - Evidence tracking
 - Reporting and analytics
 - User authentication and roles
+# Workflow of ProjectL.I.A.M.
+
+```mermaid
+graph TD
+    A[Case Creation] --> B[Assign Tasks]
+    B --> C[Enter Exhibits]
+    C --> D[Evidence Tracking]
+    D --> E[Note-taking]
+    E --> F[Analysis & Findings]
+    F --> G[Report Generation]
+    G --> H[Case Review & Closure]
+    
+    subgraph Workflow
+        direction LR
+        A --> B --> C --> D --> E --> F --> G --> H
+    end
+    
+    subgraph Additional Features
+        B --> I[User Authentication & Roles]
+        D --> J[Reporting & Analytics]
+        H --> K[Archiving]
+    end
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
