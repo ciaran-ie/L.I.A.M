@@ -21,8 +21,8 @@ This project relies heavily on [Kirjuri](https://github.com/AnttiKurittu/kirjuri
 
 ```mermaid
 graph TD
-    A[Case Creation] --> B[Assign Tasks]
-    B --> C[Enter Exhibits]
+    A[Case Creation] --> B[Enter Exhibits]
+    B --> C[Assign Tasks]
     C --> D[Evidence Tracking]
     D --> E[Note-taking]
     E --> F[Analysis & Findings]
