@@ -49,7 +49,11 @@ This project references on another open source project [Kirjuri](https://github.
 ### Dashboard
 ![Dashboard](./Screenshots/Dashboard_LIAM.png)
 
-
+## Installation
+- Put in full install instructions
+- Reccomend Ubuntu
+- DOCKERISE!!!!!!
+- HAVE IT RUN ON A RASPBERY PI
 ## Workflow of ProjectL.I.A.M.
 
 ```mermaid
