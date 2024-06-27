@@ -27,6 +27,7 @@ Easy storage of all data in a simple SQL/SQLITE so that all the information can 
 - create wiki for all different aspects of system and how to use
 - create a video showing all the different pages and how to use the system
 - create a list of icons to prepopulate the exhibit page to show what type of exhibit it is USB/LAptop/Mobile/Cloud evidence etc..
+- Case file number should prepopulate creating new case page based on incremental 
 - Create a backup page and easy to use instructions for backup of the information
 - report genereattion have it produce a nice PDF with the company/dept logo and all the particulars of the case
 - tidy up the case details page
