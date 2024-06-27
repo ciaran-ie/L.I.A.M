@@ -6,7 +6,9 @@ This project can be run from minimal spec hardware using Ubuntu/linux.
 Users can add in storage locations for exhibits, not date seized and what processes where ran on different exhibits 
 It is aimed at Law Enforcement Digital Forensics Labs.
 
-Project is fully dockerized and can be up and running in a small number of commands.
+Goal is to have Project fully dockerized and can be up and running in a small number of commands.
+
+Easy storage of all data in a simple SQL/SQLITE so that all the information can be easily backed up and taken to other programs if necessary not locked into this program.
 
 This project references on another open source project [Kirjuri](https://github.com/AnttiKurittu/kirjuri).
 
