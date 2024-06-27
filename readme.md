@@ -18,6 +18,17 @@ This project relies heavily on [Kirjuri](https://github.com/AnttiKurittu/kirjuri
 - Reporting and analytics
 - User authentication and roles
 
+## TODO
+- Add in autofill for certain items like dates/ sizes of media etc..
+- report genereattion have it produce a nice PDF with the company/dept logo and all the particulars of the case
+- tidy up the case details page
+- enable and track the audit logging
+- add in option of user to upload documents/pdf/docs etc... to a case(dont store in SQL specify a location in the local machine)
+- add in option of user to upload pics of exhibits to a case (dont store in SQL specify a location in the local machine)
+- make sure all the style packs are availble offline aswell (Put FONT AWESOME IN REPO!)
+- in the dashboard dispay more statistics
+- enable the login page 
+
 ## Workflow of ProjectL.I.A.M.
 
 ```mermaid
