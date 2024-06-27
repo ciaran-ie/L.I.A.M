@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for
-from app import app, db
-from app.models import Case, Exhibit, User
+from flask import render_template, request, redirect, url_for, flash, current_app as app
+from . import db
+from .models import Case, Exhibit, User
 
 @app.route('/')
 def index():
@@ -50,13 +50,75 @@ def add_case():
         return redirect(url_for('cases'))
     return render_template('add_case.html')
 
+@app.route('/cases/<case_file_number>', methods=['GET', 'POST'])
+def case_detail(case_file_number):
+    case = Case.query.filter_by(case_file_number=case_file_number).first_or_404()
+    exhibits = Exhibit.query.filter_by(case_file_number=case_file_number).all()
+    
+    if request.method == 'POST':
+        case.case_file_number = request.form['case_file_number']
+        case.classification = request.form['classification']
+        case.case_suspect = request.form['case_suspect']
+        case.case_location = request.form['case_location']
+        case.case_investigation_lead = request.form['case_investigation_lead']
+        case.case_investigator = request.form['case_investigator']
+        case.forensic_examiner_username = request.form['forensic_examiner_username']
+        case.case_investigator_unit = request.form['case_investigator_unit']
+        case.case_investigator_tel = request.form['case_investigator_tel']
+        case.case_confiscation_date = request.form['case_confiscation_date']
+        case.case_request_description = request.form['case_request_description']
+        case.case_requested_action = request.form['case_requested_action']
+        case.case_crime = request.form['case_crime']
+        case.case_notes = request.form['case_notes']
+
+        db.session.commit()
+        flash('Case updated successfully!', 'success')
+        return redirect(url_for('case_detail', case_file_number=case.case_file_number))
+
+    return render_template('case_detail.html', case=case, exhibits=exhibits)
+
+@app.route('/cases/<case_file_number>/add_exhibit', methods=['GET', 'POST'], endpoint='add_exhibit_to_case')
+def add_exhibit(case_file_number):
+    case = Case.query.filter_by(case_file_number=case_file_number).first_or_404()
+
+    if request.method == 'POST':
+        exhibit_ref_number = request.form['exhibit_ref_number']
+        external_ref_number = request.form['external_ref_number']
+        device_type = request.form['device_type']
+        device_manuf = request.form['device_manuf']
+        device_model = request.form['device_model']
+        device_storage = request.form['device_storage']
+        intake_date = request.form['intake_date']
+        received_from = request.form['received_from']
+        current_location = request.form['current_location']
+        is_mobile_dev = 'is_mobile_dev' in request.form
+        description_exhibits = request.form['description_exhibits']
+        password_pins_exhibit = request.form['password_pins_exhibit']
+        exhibit_returned_date = request.form['exhibit_returned_date']
+        exhibit_returned_to = request.form['exhibit_returned_to']
+        
+        new_exhibit = Exhibit(
+            case_file_number=case_file_number, exhibit_ref_number=exhibit_ref_number, external_ref_number=external_ref_number,
+            device_type=device_type, device_manuf=device_manuf, device_model=device_model, device_storage=device_storage,
+            intake_date=intake_date, received_from=received_from, current_location=current_location, is_mobile_dev=is_mobile_dev,
+            description_exhibits=description_exhibits, password_pins_exhibit=password_pins_exhibit, exhibit_returned_date=exhibit_returned_date,
+            exhibit_returned_to=exhibit_returned_to
+        )
+        
+        db.session.add(new_exhibit)
+        db.session.commit()
+        flash('Exhibit added successfully!', 'success')
+        return redirect(url_for('case_detail', case_file_number=case_file_number))
+
+    return render_template('add_exhibit.html', case=case)
+
 @app.route('/exhibits')
 def exhibits():
     exhibits = Exhibit.query.all()
     return render_template('exhibits.html', exhibits=exhibits)
 
-@app.route('/add_exhibit', methods=['GET', 'POST'])
-def add_exhibit():
+@app.route('/add_exhibit', methods=['GET', 'POST'], endpoint='add_new_exhibit')
+def add_exhibit_new():
     if request.method == 'POST':
         case_file_number = request.form['case_file_number']
         exhibit_ref_number = request.form['exhibit_ref_number']
@@ -84,6 +146,7 @@ def add_exhibit():
         
         db.session.add(new_exhibit)
         db.session.commit()
+        flash('Exhibit added successfully!', 'success')
         return redirect(url_for('exhibits'))
     return render_template('add_exhibit.html')
 
