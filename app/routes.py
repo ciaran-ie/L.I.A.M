@@ -68,7 +68,7 @@ def add_exhibit():
         intake_date = request.form['intake_date']
         received_from = request.form['received_from']
         current_location = request.form['current_location']
-        is_mobile_dev = request.form['is_mobile_dev']
+        is_mobile_dev = 'is_mobile_dev' in request.form
         description_exhibits = request.form['description_exhibits']
         password_pins_exhibit = request.form['password_pins_exhibit']
         exhibit_returned_date = request.form['exhibit_returned_date']
@@ -115,3 +115,49 @@ def add_user():
         db.session.commit()
         return redirect(url_for('users'))
     return render_template('add_user.html')
+
+@app.route('/search', methods=['GET'])
+def search():
+    search_term = request.args.get('search_term', '')
+    if search_term:
+        case_results = Case.query.filter(
+            (Case.case_file_number.contains(search_term)) |
+            (Case.classification.contains(search_term)) |
+            (Case.case_suspect.contains(search_term)) |
+            (Case.case_location.contains(search_term)) |
+            (Case.case_investigation_lead.contains(search_term)) |
+            (Case.case_investigator.contains(search_term)) |
+            (Case.forensic_examiner_username.contains(search_term)) |
+            (Case.case_investigator_unit.contains(search_term)) |
+            (Case.case_investigator_tel.contains(search_term)) |
+            (Case.case_request_description.contains(search_term)) |
+            (Case.case_requested_action.contains(search_term)) |
+            (Case.case_crime.contains(search_term)) |
+            (Case.case_notes.contains(search_term))
+        ).all()
+
+        exhibit_results = Exhibit.query.filter(
+            (Exhibit.case_file_number.contains(search_term)) |
+            (Exhibit.exhibit_ref_number.contains(search_term)) |
+            (Exhibit.external_ref_number.contains(search_term)) |
+            (Exhibit.device_type.contains(search_term)) |
+            (Exhibit.device_manuf.contains(search_term)) |
+            (Exhibit.device_model.contains(search_term)) |
+            (Exhibit.device_storage.contains(search_term)) |
+            (Exhibit.intake_date.contains(search_term)) |
+            (Exhibit.received_from.contains(search_term)) |
+            (Exhibit.current_location.contains(search_term)) |
+            (Exhibit.description_exhibits.contains(search_term)) |
+            (Exhibit.password_pins_exhibit.contains(search_term)) |
+            (Exhibit.exhibit_returned_date.contains(search_term)) |
+            (Exhibit.exhibit_returned_to.contains(search_term))
+        ).all()
+
+        results = {
+            'cases': case_results,
+            'exhibits': exhibit_results
+        }
+    else:
+        results = None
+
+    return render_template('search.html', results=results)
