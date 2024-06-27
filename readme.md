@@ -12,7 +12,7 @@ Easy storage of all data in a simple SQL/SQLITE so that all the information can 
 
 This project references on another open source project [Kirjuri](https://github.com/AnttiKurittu/kirjuri).
 
-**Note**: This project is designed for operating on an air-gapped network.
+**Note**: This project is designed for operating on an air-gapped network. It should not be deployed over the internet
 
 ## Features
 - Case management
@@ -22,6 +22,7 @@ This project references on another open source project [Kirjuri](https://github.
 
 ## TODO
 - Add in autofill for certain items like dates/ sizes of media etc..
+- Create a backup page and easy to use instructions for backup of the information
 - report genereattion have it produce a nice PDF with the company/dept logo and all the particulars of the case
 - tidy up the case details page
 - enable and track the audit logging
