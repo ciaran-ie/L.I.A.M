@@ -23,6 +23,9 @@ Easy storage of all data in a simple SQL/SQLITE so that all the information can 
 
 ## TODO
 - Add in autofill for certain items like dates/ sizes of media etc..
+- produce easy to follow install instuctions
+- create wiki for all different aspects of system and how to use
+- create a 
 - Create a backup page and easy to use instructions for backup of the information
 - report genereattion have it produce a nice PDF with the company/dept logo and all the particulars of the case
 - tidy up the case details page
