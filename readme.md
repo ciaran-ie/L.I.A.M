@@ -27,7 +27,28 @@ This project relies heavily on [Kirjuri](https://github.com/AnttiKurittu/kirjuri
 - add in option of user to upload pics of exhibits to a case (dont store in SQL specify a location in the local machine)
 - make sure all the style packs are availble offline aswell (Put FONT AWESOME IN REPO!)
 - in the dashboard dispay more statistics
-- enable the login page 
+- enable the login page
+
+## Screenshots
+
+### Search Cases and Exhibits
+![Search Cases and Exhibits](./Screenshots/search_LIAM.png)
+
+### Users
+![Users](./Screenshots/users_LIAM.png)
+
+### Exhibits
+![Exhibits](./Screenshots/exhibits_LIAM.png)
+
+### Case Details
+![Case Details](./Screenshots/casedetails_LIAM.png)
+
+### Cases
+![Cases](./Screenshots/cases_LIAM.png)
+
+### Dashboard
+![Dashboard](./Screenshots/Dashboard_LIAM.png)
+
 
 ## Workflow of ProjectL.I.A.M.
 
