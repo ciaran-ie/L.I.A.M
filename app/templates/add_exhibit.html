@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Add Exhibit{% endblock %}
+{% block content %}
+<h1>Add New Exhibit</h1>
+<form method="post">
+    <label for="case_file_number">Case File Number</label>
+    <input type="text" name="case_file_number" id="case_file_number" required>
+    
+    <label for="exhibit_ref_number">Exhibit Ref Number</label>
+    <input type="text" name="exhibit_ref_number" id="exhibit_ref_number" required>
+    
+    <label for="external_ref_number">External Ref Number</label>
+    <input type="text" name="external_ref_number" id="external_ref_number" required>
+    
+    <label for="device_type">Device Type</label>
+    <input type="text" name="device_type" id="device_type" required>
+    
+    <label for="device_manuf">Device Manufacturer</label>
+    <input type="text" name="device_manuf" id="device_manuf" required>
+    
+    <label for="device_model">Device Model</label>
+    <input type="text" name="device_model" id="device_model" required>
+    
+    <label for="device_storage">Device Storage</label>
+    <input type="text" name="device_storage" id="device_storage" required>
+    
+    <label for="intake_date">Intake Date</label>
+    <input type="date" name="intake_date" id="intake_date" required>
+    
+    <label for="received_from">Received From</label>
+    <input type="text" name="received_from" id="received_from" required>
+    
+    <label for="current_location">Current Location</label>
+    <input type="text" name="current_location" id="current_location" required>
+    
+    <label for="is_mobile_dev">Is Mobile Device</label>
+    <input type="checkbox" name="is_mobile_dev" id="is_mobile_dev">
+    
+    <label for="description_exhibits">Description</label>
+    <textarea name="description_exhibits" id="description_exhibits" required></textarea>
+    
+    <label for="password_pins_exhibit">Password/Pins</label>
+    <input type="text" name="password_pins_exhibit" id="password_pins_exhibit" required>
+    
+    <label for="exhibit_returned_date">Returned Date</label>
+    <input type="date" name="exhibit_returned_date" id="exhibit_returned_date">
+    
+    <label for="exhibit_returned_to">Returned To</label>
+    <input type="text" name="exhibit_returned_to" id="exhibit_returned_to">
+    
+    <button type="submit">Add Exhibit</button>
+</form>
+{% endblock %}
