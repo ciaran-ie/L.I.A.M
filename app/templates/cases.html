@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Cases{% endblock %}
+{% block content %}
+<h1>Cases</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Case File Number</th>
+            <th>Classification</th>
+            <th>Case Suspect</th>
+            <th>Case Location</th>
+            <th>Case Investigation Lead</th>
+            <th>Case Investigator</th>
+            <th>Forensic Examiner Username</th>
+            <th>Case Investigator Unit</th>
+            <th>Case Investigator Tel</th>
+            <th>Case Confiscation Date</th>
+            <th>Case Request Description</th>
+            <th>Case Requested Action</th>
+            <th>Case Crime</th>
+            <th>Case Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for case in cases %}
+        <tr>
+            <td>{{ case.case_file_number }}</td>
+            <td>{{ case.classification }}</td>
+            <td>{{ case.case_suspect }}</td>
+            <td>{{ case.case_location }}</td>
+            <td>{{ case.case_investigation_lead }}</td>
+            <td>{{ case.case_investigator }}</td>
+            <td>{{ case.forensic_examiner_username }}</td>
+            <td>{{ case.case_investigator_unit }}</td>
+            <td>{{ case.case_investigator_tel }}</td>
+            <td>{{ case.case_confiscation_date }}</td>
+            <td>{{ case.case_request_description }}</td>
+            <td>{{ case.case_requested_action }}</td>
+            <td>{{ case.case_crime }}</td>
+            <td>{{ case.case_notes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_case') }}" class="btn btn-primary">Add New Case</a>
+{% endblock %}
