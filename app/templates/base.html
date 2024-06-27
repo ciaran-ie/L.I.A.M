@@ -8,8 +8,16 @@
 </head>
 <body>
     <div class="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('cases') }}">Cases</a></li>
+                <li><a href="{{ url_for('exhibits') }}">Exhibits</a></li>
+                <li><a href="{{ url_for('users') }}">Users</a></li>
+                <li><a href="{{ url_for('search') }}">Search</a></li>
+            </ul>
+        </nav>
         {% block content %}{% endblock %}
     </div>
 </body>
 </html>
-
