@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}L.I.A.M{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="sidebar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="L.I.A.M Logo">
+        </div>
         <nav>
             <ul>
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('cases') }}">Cases</a></li>
-                <li><a href="{{ url_for('exhibits') }}">Exhibits</a></li>
-                <li><a href="{{ url_for('users') }}">Users</a></li>
-                <li><a href="{{ url_for('search') }}">Search</a></li>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="{{ url_for('cases') }}"><i class="fas fa-briefcase"></i> Cases</a></li>
+                <li><a href="{{ url_for('exhibits') }}"><i class="fas fa-box"></i> Exhibits</a></li>
+                <li><a href="{{ url_for('users') }}"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="{{ url_for('add_user') }}"><i class="fas fa-user-plus"></i> Add User</a></li>
+                <li><a href="{{ url_for('search') }}"><i class="fas fa-search"></i> Search</a></li>
             </ul>
         </nav>
-        {% block content %}{% endblock %}
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
     </div>
 </body>
 </html>
