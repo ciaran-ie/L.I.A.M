@@ -1,58 +1,50 @@
 {% extends 'base.html' %}
-{% block title %}
-    <title>Add an Examination Request - {{ settings.title_text }}</title>
-{% endblock title %}
+{% block title %}Add Case{% endblock %}
 {% block content %}
-    <script>
-        $(document).ready(function() {
-            validate();
-            $('#case_file_number, #classification, #case_suspect, #case_investigation_lead, #case_investigator, #case_investigator_unit, #case_investigator_tel, #case_confiscation_date, #case_request_description, #case_requested_action, #case_crime').change(validate);
-        });
-        function validate() {
-            if ($('#case_file_number').val().length > {{ settings.organization_specific_prefix|length }} && $('#classification').val().length > 0 && $('#case_suspect').val().length > 0 && $('#case_investigation_lead').val().length > 0 && $('#case_investigator').val().length > 0 && $('#case_investigator_unit').val().length > 0 && $('#case_investigator_tel').val().length > 0 && $('#case_confiscation_date').val().length > 0 && $('#case_request_description').val().length > 0 && $('#case_requested_action').val().length > 0 && $('#case_crime').val().length > 0) {
-                $("#request_save_button").prop("disabled", false);
-                $("#request_save_button").addClass("btn-success");
-                $("#ohje").hide();
-            } else {
-                $("#request_save_button").prop("disabled", true);
-                $("#request_save_button").removeClass("btn-success");
-            }
-        }
-        $(function() {
-            var availableTags = [{{ confCrimes|tojson }}];
-            $("#case_crime").autocomplete({source: availableTags});
-        });
-
-        function showHint(str) {
-            if (str.length == 0) {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            }
-            fetch(`/request_hint?case_file_number=${str}`)
-                .then(response => response.text())
-                .then(data => document.getElementById("txtHint").innerHTML = data);
-        }
-    </script>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Add an Examination Request
-            <span class="pull-right">
-                <form class="form-inline" action="{{ url_for('import_krf') }}" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input class="btn btn-xs btn-default" type="file" name="fileToUpload[]" id="fileToUpload">
-                    </div>
-                    <button type="submit" class="btn btn-success btn-xs">
-                        <i class="fa fa-upload"></i> Upload .krf
-                        <span id="upload-file-info"></span>
-                    </button>
-                </form>
-            </span>
-        </h1>
-        <form class="form-horizontal" role="form" method="post" action="{{ url_for('submit_examination_request') }}">
-            <input type="hidden" name="token" value="{{ session.user.token }}">
-            <!-- Form Fields Here -->
-        </form>
-        <div class="col-md-offset-2" id="ohje">
-            <span style="color:red;">*</span> Fill all fields
-        </div>
-    </div>
+<h1>Add New Case</h1>
+<form method="post">
+    <label for="case_file_number">Case File Number</label>
+    <input type="text" name="case_file_number" id="case_file_number" required>
+    
+    <label for="classification">Classification</label>
+    <input type="text" name="classification" id="classification" required>
+    
+    <label for="case_suspect">Case Suspect</label>
+    <input type="text" name="case_suspect" id="case_suspect" required>
+    
+    <label for="case_location">Case Location</label>
+    <input type="text" name="case_location" id="case_location" required>
+    
+    <label for="case_investigation_lead">Case Investigation Lead</label>
+    <input type="text" name="case_investigation_lead" id="case_investigation_lead" required>
+    
+    <label for="case_investigator">Case Investigator</label>
+    <input type="text" name="case_investigator" id="case_investigator" required>
+    
+    <label for="forensic_examiner_username">Forensic Examiner Username</label>
+    <input type="text" name="forensic_examiner_username" id="forensic_examiner_username" required>
+    
+    <label for="case_investigator_unit">Case Investigator Unit</label>
+    <input type="text" name="case_investigator_unit" id="case_investigator_unit" required>
+    
+    <label for="case_investigator_tel">Case Investigator Tel</label>
+    <input type="text" name="case_investigator_tel" id="case_investigator_tel" required>
+    
+    <label for="case_confiscation_date">Case Confiscation Date</label>
+    <input type="text" name="case_confiscation_date" id="case_confiscation_date" required>
+    
+    <label for="case_request_description">Case Request Description</label>
+    <input type="text" name="case_request_description" id="case_request_description" required>
+    
+    <label for="case_requested_action">Case Requested Action</label>
+    <input type="text" name="case_requested_action" id="case_requested_action" required>
+    
+    <label for="case_crime">Case Crime</label>
+    <input type="text" name="case_crime" id="case_crime" required>
+    
+    <label for="case_notes">Case Notes</label>
+    <input type="text" name="case_notes" id="case_notes" required>
+    
+    <button type="submit">Add Case</button>
+</form>
 {% endblock %}
