@@ -1,0 +1,48 @@
+body {
+    background-color: #2c2c2c;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #444;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #fff;
+    background-color: #333;
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #444;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #444;
+}
+
+.table tbody + tbody {
+    border-top: 2px solid #444;
+}
