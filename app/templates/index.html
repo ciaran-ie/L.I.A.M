@@ -1,16 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Project L.I.A.M.</title>
-</head>
-<body>
-    <h1>Welcome to Project L.I.A.M.</h1>
-    <ul>
-    {% for case in cases %}
-        <li>{{ case.name }}: {{ case.description }}</li>
-    {% endfor %}
-    </ul>
-    <a href="{{ url_for('add_case') }}">Add a new case</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Project L.I.A.M</h1>
+<p>This is the index page.</p>
+{% endblock %}

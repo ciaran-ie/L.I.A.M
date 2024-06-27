@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Case Details: {{ case.case_file_number }}</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="case_file_number">Case File Number</label>
+            <input type="text" class="form-control" id="case_file_number" name="case_file_number" value="{{ case.case_file_number }}">
+        </div>
+        <div class="form-group">
+            <label for="classification">Classification</label>
+            <input type="text" class="form-control" id="classification" name="classification" value="{{ case.classification }}">
+        </div>
+        <div class="form-group">
+            <label for="case_suspect">Case Suspect</label>
+            <input type="text" class="form-control" id="case_suspect" name="case_suspect" value="{{ case.case_suspect }}">
+        </div>
+        <div class="form-group">
+            <label for="case_location">Case Location</label>
+            <input type="text" class="form-control" id="case_location" name="case_location" value="{{ case.case_location }}">
+        </div>
+        <div class="form-group">
+            <label for="case_investigation_lead">Investigation Lead</label>
+            <input type="text" class="form-control" id="case_investigation_lead" name="case_investigation_lead" value="{{ case.case_investigation_lead }}">
+        </div>
+        <div class="form-group">
+            <label for="case_investigator">Case Investigator</label>
+            <input type="text" class="form-control" id="case_investigator" name="case_investigator" value="{{ case.case_investigator }}">
+        </div>
+        <div class="form-group">
+            <label for="forensic_examiner_username">Forensic Examiner Username</label>
+            <input type="text" class="form-control" id="forensic_examiner_username" name="forensic_examiner_username" value="{{ case.forensic_examiner_username }}">
+        </div>
+        <div class="form-group">
+            <label for="case_investigator_unit">Investigator Unit</label>
+            <input type="text" class="form-control" id="case_investigator_unit" name="case_investigator_unit" value="{{ case.case_investigator_unit }}">
+        </div>
+        <div class="form-group">
+            <label for="case_investigator_tel">Investigator Tel</label>
+            <input type="text" class="form-control" id="case_investigator_tel" name="case_investigator_tel" value="{{ case.case_investigator_tel }}">
+        </div>
+        <div class="form-group">
+            <label for="case_confiscation_date">Confiscation Date</label>
+            <input type="text" class="form-control" id="case_confiscation_date" name="case_confiscation_date" value="{{ case.case_confiscation_date }}">
+        </div>
+        <div class="form-group">
+            <label for="case_request_description">Request Description</label>
+            <textarea class="form-control" id="case_request_description" name="case_request_description">{{ case.case_request_description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="case_requested_action">Requested Action</label>
+            <textarea class="form-control" id="case_requested_action" name="case_requested_action">{{ case.case_requested_action }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="case_crime">Crime</label>
+            <textarea class="form-control" id="case_crime" name="case_crime">{{ case.case_crime }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="case_notes">Notes</label>
+            <textarea class="form-control" id="case_notes" name="case_notes">{{ case.case_notes }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+    <h3>Exhibits ({{ exhibits|length }})</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Exhibit Reference Number</th>
+                <th>Device Type</th>
+                <th>Device Manufacturer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exhibit in exhibits %}
+            <tr>
+                <td>{{ exhibit.exhibit_ref_number }}</td>
+                <td>{{ exhibit.device_type }}</td>
+                <td>{{ exhibit.device_manuf }}</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-primary">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('add_exhibit_to_case', case_file_number=case.case_file_number) }}" class="btn btn-success">Add Exhibit</a>
+</div>
+{% endblock %}
