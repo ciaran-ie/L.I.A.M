@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Exhibits{% endblock %}
+{% block content %}
+<h1>Exhibits</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Case File Number</th>
+            <th>Exhibit Ref Number</th>
+            <th>External Ref Number</th>
+            <th>Device Type</th>
+            <th>Device Manufacturer</th>
+            <th>Device Model</th>
+            <th>Device Storage</th>
+            <th>Intake Date</th>
+            <th>Received From</th>
+            <th>Current Location</th>
+            <th>Is Mobile Device</th>
+            <th>Description</th>
+            <th>Password/Pins</th>
+            <th>Returned Date</th>
+            <th>Returned To</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for exhibit in exhibits %}
+        <tr>
+            <td>{{ exhibit.case_file_number }}</td>
+            <td>{{ exhibit.exhibit_ref_number }}</td>
+            <td>{{ exhibit.external_ref_number }}</td>
+            <td>{{ exhibit.device_type }}</td>
+            <td>{{ exhibit.device_manuf }}</td>
+            <td>{{ exhibit.device_model }}</td>
+            <td>{{ exhibit.device_storage }}</td>
+            <td>{{ exhibit.intake_date }}</td>
+            <td>{{ exhibit.received_from }}</td>
+            <td>{{ exhibit.current_location }}</td>
+            <td>{{ 'Yes' if exhibit.is_mobile_dev else 'No' }}</td>
+            <td>{{ exhibit.description_exhibits }}</td>
+            <td>{{ exhibit.password_pins_exhibit }}</td>
+            <td>{{ exhibit.exhibit_returned_date }}</td>
+            <td>{{ exhibit.exhibit_returned_to }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_exhibit') }}" class="btn btn-primary">Add New Exhibit</a>
+{% endblock %}
