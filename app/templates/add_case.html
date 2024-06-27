@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Add an Examination Request - {{ settings.title_text }}</title>
+{% endblock title %}
+{% block content %}
+    <script>
+        $(document).ready(function() {
+            validate();
+            $('#case_file_number, #classification, #case_suspect, #case_investigation_lead, #case_investigator, #case_investigator_unit, #case_investigator_tel, #case_confiscation_date, #case_request_description, #case_requested_action, #case_crime').change(validate);
+        });
+        function validate() {
+            if ($('#case_file_number').val().length > {{ settings.organization_specific_prefix|length }} && $('#classification').val().length > 0 && $('#case_suspect').val().length > 0 && $('#case_investigation_lead').val().length > 0 && $('#case_investigator').val().length > 0 && $('#case_investigator_unit').val().length > 0 && $('#case_investigator_tel').val().length > 0 && $('#case_confiscation_date').val().length > 0 && $('#case_request_description').val().length > 0 && $('#case_requested_action').val().length > 0 && $('#case_crime').val().length > 0) {
+                $("#request_save_button").prop("disabled", false);
+                $("#request_save_button").addClass("btn-success");
+                $("#ohje").hide();
+            } else {
+                $("#request_save_button").prop("disabled", true);
+                $("#request_save_button").removeClass("btn-success");
+            }
+        }
+        $(function() {
+            var availableTags = [{{ confCrimes|tojson }}];
+            $("#case_crime").autocomplete({source: availableTags});
+        });
+
+        function showHint(str) {
+            if (str.length == 0) {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            }
+            fetch(`/request_hint?case_file_number=${str}`)
+                .then(response => response.text())
+                .then(data => document.getElementById("txtHint").innerHTML = data);
+        }
+    </script>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Add an Examination Request
+            <span class="pull-right">
+                <form class="form-inline" action="{{ url_for('import_krf') }}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input class="btn btn-xs btn-default" type="file" name="fileToUpload[]" id="fileToUpload">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-xs">
+                        <i class="fa fa-upload"></i> Upload .krf
+                        <span id="upload-file-info"></span>
+                    </button>
+                </form>
+            </span>
+        </h1>
+        <form class="form-horizontal" role="form" method="post" action="{{ url_for('submit_examination_request') }}">
+            <input type="hidden" name="token" value="{{ session.user.token }}">
+            <!-- Form Fields Here -->
+        </form>
+        <div class="col-md-offset-2" id="ohje">
+            <span style="color:red;">*</span> Fill all fields
+        </div>
+    </div>
+{% endblock %}
