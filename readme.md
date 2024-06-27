@@ -8,7 +8,7 @@ It is aimed at Law Enforcement Digital Forensics Labs.
 
 Project is fully dockerized and can be up and running in a small number of commands.
 
-This project relies heavily on [Kirjuri](https://github.com/AnttiKurittu/kirjuri).
+This project references on another open source project [Kirjuri](https://github.com/AnttiKurittu/kirjuri).
 
 **Note**: This project is designed for operating on an air-gapped network.
 
