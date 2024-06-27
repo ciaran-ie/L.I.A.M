@@ -1,47 +1,117 @@
-from flask import render_template, request, redirect, url_for, flash
-from app import db
-from app.models import Case
+from flask import render_template, request, redirect, url_for
+from app import app, db
+from app.models import Case, Exhibit, User
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/dashboard')
+def dashboard():
+    total_cases = Case.query.count()
+    total_evidence_items = Exhibit.query.count()
+    total_users = User.query.count()
+    return render_template('dashboard.html', total_cases=total_cases, total_evidence_items=total_evidence_items, total_users=total_users)
+
+@app.route('/cases')
+def cases():
+    cases = Case.query.all()
+    return render_template('cases.html', cases=cases)
 
 @app.route('/add_case', methods=['GET', 'POST'])
 def add_case():
     if request.method == 'POST':
-        case_name = request.form['case_name']
         case_file_number = request.form['case_file_number']
-        case_crime = request.form['case_crime']
         classification = request.form['classification']
         case_suspect = request.form['case_suspect']
+        case_location = request.form['case_location']
         case_investigation_lead = request.form['case_investigation_lead']
         case_investigator = request.form['case_investigator']
-        case_investigator_tel = request.form['case_investigator_tel']
+        forensic_examiner_username = request.form['forensic_examiner_username']
         case_investigator_unit = request.form['case_investigator_unit']
+        case_investigator_tel = request.form['case_investigator_tel']
         case_confiscation_date = request.form['case_confiscation_date']
         case_request_description = request.form['case_request_description']
         case_requested_action = request.form['case_requested_action']
-        examiners_notes = request.form['examiners_notes']
-        case_contains_mob_dev = bool(request.form.get('case_contains_mob_dev', False))
-        case_urgency = request.form['case_urgency']
-        case_urg_justification = request.form['case_urg_justification']
-
+        case_crime = request.form['case_crime']
+        case_notes = request.form['case_notes']
+        
         new_case = Case(
-            name=case_name,
-            file_number=case_file_number,
-            crime=case_crime,
-            classification=classification,
-            suspect=case_suspect,
-            investigation_lead=case_investigation_lead,
-            investigator=case_investigator,
-            investigator_tel=case_investigator_tel,
-            investigator_unit=case_investigator_unit,
-            confiscation_date=case_confiscation_date,
-            request_description=case_request_description,
-            requested_action=case_requested_action,
-            examiners_notes=examiners_notes,
-            contains_mob_dev=case_contains_mob_dev,
-            urgency=case_urgency,
-            urg_justification=case_urg_justification
+            case_file_number=case_file_number, classification=classification, case_suspect=case_suspect,
+            case_location=case_location, case_investigation_lead=case_investigation_lead, case_investigator=case_investigator,
+            forensic_examiner_username=forensic_examiner_username, case_investigator_unit=case_investigator_unit,
+            case_investigator_tel=case_investigator_tel, case_confiscation_date=case_confiscation_date,
+            case_request_description=case_request_description, case_requested_action=case_requested_action,
+            case_crime=case_crime, case_notes=case_notes
         )
+        
         db.session.add(new_case)
         db.session.commit()
-        flash('Case added successfully')
-        return redirect(url_for('index'))
+        return redirect(url_for('cases'))
     return render_template('add_case.html')
+
+@app.route('/exhibits')
+def exhibits():
+    exhibits = Exhibit.query.all()
+    return render_template('exhibits.html', exhibits=exhibits)
+
+@app.route('/add_exhibit', methods=['GET', 'POST'])
+def add_exhibit():
+    if request.method == 'POST':
+        case_file_number = request.form['case_file_number']
+        exhibit_ref_number = request.form['exhibit_ref_number']
+        external_ref_number = request.form['external_ref_number']
+        device_type = request.form['device_type']
+        device_manuf = request.form['device_manuf']
+        device_model = request.form['device_model']
+        device_storage = request.form['device_storage']
+        intake_date = request.form['intake_date']
+        received_from = request.form['received_from']
+        current_location = request.form['current_location']
+        is_mobile_dev = request.form['is_mobile_dev']
+        description_exhibits = request.form['description_exhibits']
+        password_pins_exhibit = request.form['password_pins_exhibit']
+        exhibit_returned_date = request.form['exhibit_returned_date']
+        exhibit_returned_to = request.form['exhibit_returned_to']
+        
+        new_exhibit = Exhibit(
+            case_file_number=case_file_number, exhibit_ref_number=exhibit_ref_number, external_ref_number=external_ref_number,
+            device_type=device_type, device_manuf=device_manuf, device_model=device_model, device_storage=device_storage,
+            intake_date=intake_date, received_from=received_from, current_location=current_location, is_mobile_dev=is_mobile_dev,
+            description_exhibits=description_exhibits, password_pins_exhibit=password_pins_exhibit, exhibit_returned_date=exhibit_returned_date,
+            exhibit_returned_to=exhibit_returned_to
+        )
+        
+        db.session.add(new_exhibit)
+        db.session.commit()
+        return redirect(url_for('exhibits'))
+    return render_template('add_exhibit.html')
+
+@app.route('/users')
+def users():
+    users = User.query.all()
+    return render_template('users.html', users=users)
+
+@app.route('/add_user', methods=['GET', 'POST'])
+def add_user():
+    if request.method == 'POST':
+        forensic_examiner_username = request.form['forensic_examiner_username']
+        full_name = request.form['full_name']
+        title = request.form['title']
+        role = request.form['role']
+        active_cases = request.form['active_cases']
+        completed_cases = request.form['completed_cases']
+        password = request.form['password']
+        tel_number = request.form['tel_number']
+        email = request.form['email']
+        
+        new_user = User(
+            forensic_examiner_username=forensic_examiner_username, full_name=full_name, title=title, role=role,
+            active_cases=active_cases, completed_cases=completed_cases, tel_number=tel_number, email=email
+        )
+        new_user.password = password  # This will hash the password
+        
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('users'))
+    return render_template('add_user.html')
