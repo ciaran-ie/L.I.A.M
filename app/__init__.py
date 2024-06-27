@@ -1,6 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env file
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -13,7 +17,7 @@ def create_app():
     migrate.init_app(app, db)
 
     with app.app_context():
-        from . import routes, models
+        from . import routes  # Ensure this import is correct
         db.create_all()
 
     return app
