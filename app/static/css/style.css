@@ -2,10 +2,62 @@ body {
     background-color: #2c2c2c;
     color: #fff;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
-.container {
+.sidebar {
+    background-color: #1c1c1c;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+}
+
+.sidebar nav ul li a {
+    color: #ccc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.sidebar nav ul li a i {
+    margin-right: 10px;
+}
+
+.content {
+    margin-left: 250px;
     padding: 20px;
+    width: calc(100% - 250px);
 }
 
 .card {
@@ -13,12 +65,14 @@ body {
     border: 1px solid #444;
     border-radius: 5px;
     margin-bottom: 20px;
+    padding: 20px;
 }
 
 .card-header {
     background-color: #444;
     padding: 10px;
     font-size: 1.2em;
+    border-bottom: 1px solid #555;
 }
 
 .card-body {
@@ -30,12 +84,13 @@ body {
     margin-bottom: 1rem;
     color: #fff;
     background-color: #333;
+    border-collapse: collapse;
 }
 
 .table th, .table td {
     padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #444;
+    border: 1px solid #444;
 }
 
 .table thead th {
@@ -45,4 +100,13 @@ body {
 
 .table tbody + tbody {
     border-top: 2px solid #444;
+}
+
+/* Additional Styles for Better Look */
+.table th {
+    background-color: #444;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #555;
 }
