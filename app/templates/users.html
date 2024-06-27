@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Users{% endblock %}
+{% block content %}
+<h1>Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Forensic Examiner Username</th>
+            <th>Full Name</th>
+            <th>Title</th>
+            <th>Role</th>
+            <th>Active Cases</th>
+            <th>Completed Cases</th>
+            <th>Tel Number</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.forensic_examiner_username }}</td>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.title }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.active_cases }}</td>
+            <td>{{ user.completed_cases }}</td>
+            <td>{{ user.tel_number }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_user') }}" class="btn btn-primary">Add New User</a>
+{% endblock %}
