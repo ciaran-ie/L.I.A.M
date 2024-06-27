@@ -12,7 +12,6 @@ Goal is to have Project fully dockerized and can be up and running in a small nu
 
 Easy storage of all data in a simple SQL/SQLITE so that all the information can be easily backed up and taken to other programs if necessary not locked into this program.
 
-This project references on another open source project [Kirjuri](https://github.com/AnttiKurittu/kirjuri).
 
 **Note**: This project is designed for operating on an air-gapped network. It should not be deployed over the internet
 
