@@ -1,6 +1,6 @@
 # L.I.A.M. - Law-Enforcement Investigations and Asset Management System
 
-L.I.A.M is a simple Python Flask web application for managing digital forensic cases and digital forensic evidence items. It can use SQLite/SQL as the storage backend, and it is intended to be used as a workflow tool for receiving, booking, note-taking, and possibly reporting findings. It simplifies and helps in case management when dealing with a large (or small!) number of devices submitted for forensic analysis in a lab.
+L.I.A.M is an open source simple Python Flask web application for managing digital forensic cases and digital forensic evidence items. It can use SQLite/SQL as the storage backend, and it is intended to be used as a workflow tool for receiving, booking, note-taking, and possibly reporting findings. It simplifies and helps in case management when dealing with a large (or small!) number of devices submitted for forensic analysis in a lab.
 Ideally this might suit a small forensic lab that is too busy for an Excel sheet but doesn't have the budget for a paid tool.
 This project can be run from minimal spec hardware using Ubuntu/linux.
 Users can add in storage locations for exhibits, not date seized and what processes where ran on different exhibits 
