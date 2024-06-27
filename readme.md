@@ -25,6 +25,8 @@ This project references on another open source project [Kirjuri](https://github.
 - Create a backup page and easy to use instructions for backup of the information
 - report genereattion have it produce a nice PDF with the company/dept logo and all the particulars of the case
 - tidy up the case details page
+- when the user adds notes to a case have it add the timestamp to the notes
+- create a chain of custody page for exhibits which clearly shows exhibit movements
 - enable and track the audit logging
 - add in option of user to upload documents/pdf/docs etc... to a case(dont store in SQL specify a location in the local machine)
 - add in option of user to upload pics of exhibits to a case (dont store in SQL specify a location in the local machine)
