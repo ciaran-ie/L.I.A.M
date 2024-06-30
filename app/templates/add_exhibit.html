@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <h2>Add Exhibit to Case: {{ case.case_file_number }}</h2>
+    <h2>Add Exhibit{% if case %} to Case: {{ case.case_file_number }}{% endif %}</h2>
     <form method="POST">
         <div class="form-group">
             <label for="exhibit_ref_number">Exhibit Reference Number</label>
