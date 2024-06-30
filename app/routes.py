@@ -80,9 +80,13 @@ def case_detail(case_file_number):
 def get_next_exhibit_number(case_file_number):
     last_exhibit = Exhibit.query.filter_by(case_file_number=case_file_number).order_by(Exhibit.id.desc()).first()
     if last_exhibit:
-        return last_exhibit.exhibit_ref_number + 1
+        try:
+            last_number = int(last_exhibit.exhibit_ref_number)
+            return str(last_number + 1)
+        except ValueError:
+            return "1"  # Fallback if exhibit_ref_number is not an integer
     else:
-        return 1
+        return "1"
 
 @app.route('/cases/<case_file_number>/add_exhibit', methods=['GET', 'POST'], endpoint='add_exhibit_to_case')
 def add_exhibit(case_file_number):
