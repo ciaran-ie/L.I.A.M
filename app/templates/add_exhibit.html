@@ -6,7 +6,7 @@
     <form method="POST">
         <div class="form-group">
             <label for="exhibit_ref_number">Exhibit Reference Number</label>
-            <input type="text" class="form-control" id="exhibit_ref_number" name="exhibit_ref_number" required>
+            <input type="text" class="form-control" id="exhibit_ref_number" name="exhibit_ref_number" required value="{{ next_exhibit_number }}" readonly>
         </div>
         <div class="form-group">
             <label for="external_ref_number">External Reference Number</label>
@@ -14,7 +14,37 @@
         </div>
         <div class="form-group">
             <label for="device_type">Device Type</label>
-            <input type="text" class="form-control" id="device_type" name="device_type">
+            <select class="form-control" id="device_type" name="device_type">
+                <option value="apple14.png">Apple</option>
+                <option value="cassette-tape.png">Cassette Tape</option>
+                <option value="cellphone87.png">Cell Phone</option>
+                <option value="cloud118.png">Cloud</option>
+                <option value="computer-screen1.png">Computer Screen</option>
+                <option value="computer205.png">Computer</option>
+                <option value="computer238.png">Computer</option>
+                <option value="computing67.png">Computing</option>
+                <option value="disc15.png">Disc</option>
+                <option value="floppy13.png">Floppy</option>
+                <option value="gamepad10.png">Gamepad</option>
+                <option value="gamepad8.png">Gamepad</option>
+                <option value="hardware6.png">Hardware</option>
+                <option value="hosting.png">Hosting</option>
+                <option value="internet113.png">Internet</option>
+                <option value="mobilephone31.png">Mobile Phone</option>
+                <option value="musical156.png">Musical</option>
+                <option value="pci1.png">PCI</option>
+                <option value="pendrive10.png">Pendrive</option>
+                <option value="photo226.png">Photo</option>
+                <option value="ports.png">Ports</option>
+                <option value="rack1.png">Rack</option>
+                <option value="save29.png">Save</option>
+                <option value="screen73.png">Screen</option>
+                <option value="servers1.png">Servers</option>
+                <option value="sim3.png">SIM</option>
+                <option value="storage20.png">Storage</option>
+                <option value="storage28.png">Storage</option>
+                <option value="OTHER">Other</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="device_manuf">Device Manufacturer</label>
@@ -25,8 +55,8 @@
             <input type="text" class="form-control" id="device_model" name="device_model">
         </div>
         <div class="form-group">
-            <label for="device_storage">Device Storage</label>
-            <input type="text" class="form-control" id="device_storage" name="device_storage">
+            <label for="device_storage">Device Storage (GB)</label>
+            <input type="number" class="form-control" id="device_storage" name="device_storage">
         </div>
         <div class="form-group">
             <label for="intake_date">Intake Date</label>
