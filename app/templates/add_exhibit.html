@@ -5,6 +5,10 @@
     <h2>Add Exhibit{% if case %} to Case: {{ case.case_file_number }}{% endif %}</h2>
     <form method="POST">
         <div class="form-group">
+            <label for="case_file_number">Case File Number</label>
+            <input type="text" class="form-control" id="case_file_number" name="case_file_number" required>
+        </div>
+        <div class="form-group">
             <label for="exhibit_ref_number">Exhibit Reference Number</label>
             <input type="text" class="form-control" id="exhibit_ref_number" name="exhibit_ref_number" required value="{{ next_exhibit_number }}" readonly>
         </div>
