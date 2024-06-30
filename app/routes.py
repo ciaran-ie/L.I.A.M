@@ -125,6 +125,7 @@ def exhibits():
 
 @app.route('/add_exhibit', methods=['GET', 'POST'], endpoint='add_new_exhibit')
 def add_exhibit_new():
+    next_exhibit_number = 1  # Default value if case_file_number is not provided
     if request.method == 'POST':
         case_file_number = request.form['case_file_number']
         exhibit_ref_number = get_next_exhibit_number(case_file_number)
@@ -155,7 +156,6 @@ def add_exhibit_new():
         flash('Exhibit added successfully!', 'success')
         return redirect(url_for('exhibits'))
     
-    next_exhibit_number = 1  # Default value if case_file_number is not provided
     return render_template('add_exhibit.html', next_exhibit_number=next_exhibit_number)
 
 @app.route('/users')
