@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ exhibit.exhibit_ref_number }}</td>
                 <td>{{ exhibit.case_file_number }}</td>
-                <td>{{ exhibit.device_type }}</td>
+                <td><img src="{{ url_for('static', filename='device_icons/' + exhibit.device_type) }}" alt="{{ exhibit.device_type }}" width="32" height="32"></td>
                 <td>{{ exhibit.device_manuf }}</td>
                 <td>{{ exhibit.intake_date }}</td>
                 <td>{{ exhibit.current_location }}</td>
