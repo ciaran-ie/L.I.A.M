@@ -154,7 +154,9 @@ def add_exhibit_new():
         db.session.commit()
         flash('Exhibit added successfully!', 'success')
         return redirect(url_for('exhibits'))
-    return render_template('add_exhibit.html')
+    
+    next_exhibit_number = 1  # Default value if case_file_number is not provided
+    return render_template('add_exhibit.html', next_exhibit_number=next_exhibit_number)
 
 @app.route('/users')
 def users():
