@@ -77,12 +77,19 @@ def case_detail(case_file_number):
 
     return render_template('case_detail.html', case=case, exhibits=exhibits)
 
+def get_next_exhibit_number(case_file_number):
+    last_exhibit = Exhibit.query.filter_by(case_file_number=case_file_number).order_by(Exhibit.id.desc()).first()
+    if last_exhibit:
+        return last_exhibit.exhibit_ref_number + 1
+    else:
+        return 1
+
 @app.route('/cases/<case_file_number>/add_exhibit', methods=['GET', 'POST'], endpoint='add_exhibit_to_case')
 def add_exhibit(case_file_number):
     case = Case.query.filter_by(case_file_number=case_file_number).first_or_404()
-
+    next_exhibit_number = get_next_exhibit_number(case_file_number)
     if request.method == 'POST':
-        exhibit_ref_number = request.form['exhibit_ref_number']
+        exhibit_ref_number = next_exhibit_number
         external_ref_number = request.form['external_ref_number']
         device_type = request.form['device_type']
         device_manuf = request.form['device_manuf']
@@ -109,8 +116,7 @@ def add_exhibit(case_file_number):
         db.session.commit()
         flash('Exhibit added successfully!', 'success')
         return redirect(url_for('case_detail', case_file_number=case_file_number))
-
-    return render_template('add_exhibit.html', case=case)
+    return render_template('add_exhibit.html', case=case, next_exhibit_number=next_exhibit_number)
 
 @app.route('/exhibits')
 def exhibits():
@@ -121,7 +127,7 @@ def exhibits():
 def add_exhibit_new():
     if request.method == 'POST':
         case_file_number = request.form['case_file_number']
-        exhibit_ref_number = request.form['exhibit_ref_number']
+        exhibit_ref_number = get_next_exhibit_number(case_file_number)
         external_ref_number = request.form['external_ref_number']
         device_type = request.form['device_type']
         device_manuf = request.form['device_manuf']
