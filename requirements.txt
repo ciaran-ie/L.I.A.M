@@ -2,3 +2,4 @@ Flask
 Flask-SQLAlchemy
 Flask-Migrate
 gunicorn
+python-dotenv
