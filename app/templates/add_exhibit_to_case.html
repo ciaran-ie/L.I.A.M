@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Add Exhibit to Case: {{ case.case_file_number }}</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="exhibit_ref_number">Exhibit Reference Number</label>
+            <input type="text" class="form-control" id="exhibit_ref_number" name="exhibit_ref_number" required>
+        </div>
+        <div class="form-group">
+            <label for="external_ref_number">External Reference Number</label>
+            <input type="text" class="form-control" id="external_ref_number" name="external_ref_number">
+        </div>
+        <div class="form-group">
+            <label for="device_type">Device Type</label>
+            <input type="text" class="form-control" id="device_type" name="device_type">
+        </div>
+        <div class="form-group">
+            <label for="device_manuf">Device Manufacturer</label>
+            <input type="text" class="form-control" id="device_manuf" name="device_manuf">
+        </div>
+        <div class="form-group">
+            <label for="device_model">Device Model</label>
+            <input type="text" class="form-control" id="device_model" name="device_model">
+        </div>
+        <div class="form-group">
+            <label for="device_storage">Device Storage</label>
+            <input type="text" class="form-control" id="device_storage" name="device_storage">
+        </div>
+        <div class="form-group">
+            <label for="intake_date">Intake Date</label>
+            <input type="date" class="form-control" id="intake_date" name="intake_date">
+        </div>
+        <div class="form-group">
+            <label for="received_from">Received From</label>
+            <input type="text" class="form-control" id="received_from" name="received_from">
+        </div>
+        <div class="form-group">
+            <label for="current_location">Current Location</label>
+            <input type="text" class="form-control" id="current_location" name="current_location">
+        </div>
+        <div class="form-group">
+            <label for="is_mobile_dev">Is Mobile Device</label>
+            <input type="checkbox" id="is_mobile_dev" name="is_mobile_dev">
+        </div>
+        <div class="form-group">
+            <label for="description_exhibits">Description</label>
+            <textarea class="form-control" id="description_exhibits" name="description_exhibits"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="password_pins_exhibit">Password/Pins</label>
+            <textarea class="form-control" id="password_pins_exhibit" name="password_pins_exhibit"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exhibit_returned_date">Exhibit Returned Date</label>
+            <input type="date" class="form-control" id="exhibit_returned_date" name="exhibit_returned_date">
+        </div>
+        <div class="form-group">
+            <label for="exhibit_returned_to">Exhibit Returned To</label>
+            <input type="text" class="form-control" id="exhibit_returned_to" name="exhibit_returned_to">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Exhibit</button>
+    </form>
+</div>
+{% endblock %}

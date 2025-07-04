@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<h1>Search Cases and Exhibits</h1>
+<form method="get" action="{{ url_for('search') }}">
+    <label for="search_term">Search</label>
+    <input type="text" name="search_term" id="search_term" required>
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+    <h2>Search Results</h2>
+    <h3>Cases</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Case File Number</th>
+                <th>Classification</th>
+                <th>Case Suspect</th>
+                <th>Case Location</th>
+                <th>Case Investigation Lead</th>
+                <th>Case Investigator</th>
+                <th>Forensic Examiner Username</th>
+                <th>Case Investigator Unit</th>
+                <th>Case Investigator Tel</th>
+                <th>Case Confiscation Date</th>
+                <th>Case Request Description</th>
+                <th>Case Requested Action</th>
+                <th>Case Crime</th>
+                <th>Case Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in results['cases'] %}
+            <tr>
+                <td>{{ case.case_file_number }}</td>
+                <td>{{ case.classification }}</td>
+                <td>{{ case.case_suspect }}</td>
+                <td>{{ case.case_location }}</td>
+                <td>{{ case.case_investigation_lead }}</td>
+                <td>{{ case.case_investigator }}</td>
+                <td>{{ case.forensic_examiner_username }}</td>
+                <td>{{ case.case_investigator_unit }}</td>
+                <td>{{ case.case_investigator_tel }}</td>
+                <td>{{ case.case_confiscation_date }}</td>
+                <td>{{ case.case_request_description }}</td>
+                <td>{{ case.case_requested_action }}</td>
+                <td>{{ case.case_crime }}</td>
+                <td>{{ case.case_notes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Exhibits</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Case File Number</th>
+                <th>Exhibit Ref Number</th>
+                <th>External Ref Number</th>
+                <th>Device Type</th>
+                <th>Device Manufacturer</th>
+                <th>Device Model</th>
+                <th>Device Storage</th>
+                <th>Intake Date</th>
+                <th>Received From</th>
+                <th>Current Location</th>
+                <th>Is Mobile Device</th>
+                <th>Description</th>
+                <th>Password/Pins</th>
+                <th>Returned Date</th>
+                <th>Returned To</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exhibit in results['exhibits'] %}
+            <tr>
+                <td>{{ exhibit.case_file_number }}</td>
+                <td>{{ exhibit.exhibit_ref_number }}</td>
+                <td>{{ exhibit.external_ref_number }}</td>
+                <td>{{ exhibit.device_type }}</td>
+                <td>{{ exhibit.device_manuf }}</td>
+                <td>{{ exhibit.device_model }}</td>
+                <td>{{ exhibit.device_storage }}</td>
+                <td>{{ exhibit.intake_date }}</td>
+                <td>{{ exhibit.received_from }}</td>
+                <td>{{ exhibit.current_location }}</td>
+                <td>{{ 'Yes' if exhibit.is_mobile_dev else 'No' }}</td>
+                <td>{{ exhibit.description_exhibits }}</td>
+                <td>{{ exhibit.password_pins_exhibit }}</td>
+                <td>{{ exhibit.exhibit_returned_date }}</td>
+                <td>{{ exhibit.exhibit_returned_to }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}

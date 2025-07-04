@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Add Exhibit{% if case %} to Case: {{ case.case_file_number }}{% endif %}</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="case_file_number">Case File Number</label>
+            <input type="text" class="form-control" id="case_file_number" name="case_file_number" required>
+        </div>
+        <div class="form-group">
+            <label for="exhibit_ref_number">Exhibit Reference Number</label>
+            <input type="text" class="form-control" id="exhibit_ref_number" name="exhibit_ref_number" required value="{{ next_exhibit_number }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="external_ref_number">External Reference Number</label>
+            <input type="text" class="form-control" id="external_ref_number" name="external_ref_number">
+        </div>
+        <div class="form-group">
+            <label for="device_type">Device Type</label>
+            <select class="form-control" id="device_type" name="device_type">
+                <option value="apple14.png">Apple</option>
+                <option value="cassette-tape.png">Cassette Tape</option>
+                <option value="cellphone87.png">Cell Phone</option>
+                <option value="cloud118.png">Cloud</option>
+                <option value="computer-screen1.png">Computer Screen</option>
+                <option value="computer205.png">Computer</option>
+                <option value="computer238.png">Computer</option>
+                <option value="computing67.png">Computing</option>
+                <option value="disc15.png">Disc</option>
+                <option value="floppy13.png">Floppy</option>
+                <option value="gamepad10.png">Gamepad</option>
+                <option value="gamepad8.png">Gamepad</option>
+                <option value="hardware6.png">Hardware</option>
+                <option value="hosting.png">Hosting</option>
+                <option value="internet113.png">Internet</option>
+                <option value="mobilephone31.png">Mobile Phone</option>
+                <option value="musical156.png">Musical</option>
+                <option value="pci1.png">PCI</option>
+                <option value="pendrive10.png">Pendrive</option>
+                <option value="photo226.png">Photo</option>
+                <option value="ports.png">Ports</option>
+                <option value="rack1.png">Rack</option>
+                <option value="save29.png">Save</option>
+                <option value="screen73.png">Screen</option>
+                <option value="servers1.png">Servers</option>
+                <option value="sim3.png">SIM</option>
+                <option value="storage20.png">Storage</option>
+                <option value="storage28.png">Storage</option>
+                <option value="OTHER">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="device_manuf">Device Manufacturer</label>
+            <input type="text" class="form-control" id="device_manuf" name="device_manuf">
+        </div>
+        <div class="form-group">
+            <label for="device_model">Device Model</label>
+            <input type="text" class="form-control" id="device_model" name="device_model">
+        </div>
+        <div class="form-group">
+            <label for="device_storage">Device Storage (GB)</label>
+            <input type="number" class="form-control" id="device_storage" name="device_storage">
+        </div>
+        <div class="form-group">
+            <label for="intake_date">Intake Date</label>
+            <input type="date" class="form-control" id="intake_date" name="intake_date">
+        </div>
+        <div class="form-group">
+            <label for="received_from">Received From</label>
+            <input type="text" class="form-control" id="received_from" name="received_from">
+        </div>
+        <div class="form-group">
+            <label for="current_location">Current Location</label>
+            <input type="text" class="form-control" id="current_location" name="current_location">
+        </div>
+        <div class="form-group">
+            <label for="is_mobile_dev">Is Mobile Device</label>
+            <input type="checkbox" id="is_mobile_dev" name="is_mobile_dev">
+        </div>
+        <div class="form-group">
+            <label for="description_exhibits">Description</label>
+            <textarea class="form-control" id="description_exhibits" name="description_exhibits"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="password_pins_exhibit">Password/Pins</label>
+            <textarea class="form-control" id="password_pins_exhibit" name="password_pins_exhibit"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exhibit_returned_date">Exhibit Returned Date</label>
+            <input type="date" class="form-control" id="exhibit_returned_date" name="exhibit_returned_date">
+        </div>
+        <div class="form-group">
+            <label for="exhibit_returned_to">Exhibit Returned To</label>
+            <input type="text" class="form-control" id="exhibit_returned_to" name="exhibit_returned_to">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Exhibit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Add User{% endblock %}
+{% block content %}
+<h1>Add New User</h1>
+<form method="post">
+    <label for="forensic_examiner_username">Forensic Examiner Username</label>
+    <input type="text" name="forensic_examiner_username" id="forensic_examiner_username" required>
+    
+    <label for="full_name">Full Name</label>
+    <input type="text" name="full_name" id="full_name" required>
+    
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" required>
+    
+    <label for="role">Role</label>
+    <input type="text" name="role" id="role" required>
+    
+    <label for="active_cases">Active Cases</label>
+    <input type="number" name="active_cases" id="active_cases" required>
+    
+    <label for="completed_cases">Completed Cases</label>
+    <input type="number" name="completed_cases" id="completed_cases" required>
+    
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    
+    <label for="tel_number">Tel Number</label>
+    <input type="text" name="tel_number" id="tel_number" required>
+    
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+    
+    <button type="submit">Add User</button>
+</form>
+{% endblock %}

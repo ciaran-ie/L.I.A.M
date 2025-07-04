@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Add Case{% endblock %}
+{% block content %}
+<h1>Add New Case</h1>
+<form method="post">
+    <label for="case_file_number">Case File Number</label>
+    <input type="text" name="case_file_number" id="case_file_number" required>
+    
+    <label for="classification">Classification</label>
+    <input type="text" name="classification" id="classification" required>
+    
+    <label for="case_suspect">Case Suspect</label>
+    <input type="text" name="case_suspect" id="case_suspect" required>
+    
+    <label for="case_location">Case Location</label>
+    <input type="text" name="case_location" id="case_location" required>
+    
+    <label for="case_investigation_lead">Case Investigation Lead</label>
+    <input type="text" name="case_investigation_lead" id="case_investigation_lead" required>
+    
+    <label for="case_investigator">Case Investigator</label>
+    <input type="text" name="case_investigator" id="case_investigator" required>
+    
+    <label for="forensic_examiner_username">Forensic Examiner Username</label>
+    <input type="text" name="forensic_examiner_username" id="forensic_examiner_username" required>
+    
+    <label for="case_investigator_unit">Case Investigator Unit</label>
+    <input type="text" name="case_investigator_unit" id="case_investigator_unit" required>
+    
+    <label for="case_investigator_tel">Case Investigator Tel</label>
+    <input type="text" name="case_investigator_tel" id="case_investigator_tel" required>
+    
+    <label for="case_confiscation_date">Case Confiscation Date</label>
+    <input type="text" name="case_confiscation_date" id="case_confiscation_date" required>
+    
+    <label for="case_request_description">Case Request Description</label>
+    <input type="text" name="case_request_description" id="case_request_description" required>
+    
+    <label for="case_requested_action">Case Requested Action</label>
+    <input type="text" name="case_requested_action" id="case_requested_action" required>
+    
+    <label for="case_crime">Case Crime</label>
+    <input type="text" name="case_crime" id="case_crime" required>
+    
+    <label for="case_notes">Case Notes</label>
+    <input type="text" name="case_notes" id="case_notes" required>
+    
+    <button type="submit">Add Case</button>
+</form>
+{% endblock %}
